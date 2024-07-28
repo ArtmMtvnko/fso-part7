@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
+const baseUrl = 'https://studies.cs.helsinki.fi/restcountries/api'
+
 const useField = (type) => {
   const [value, setValue] = useState('')
 
@@ -17,8 +19,29 @@ const useField = (type) => {
 
 const useCountry = (name) => {
   const [country, setCountry] = useState(null)
-
-  useEffect(() => {})
+  useEffect(() => {
+    console.log('i am in', name)
+    if (!name.trim()) return
+    
+    axios.get(`${baseUrl}/name/${name}`)
+      .then(response => response.data)
+      .then(country => {
+        console.log(country)
+        setCountry({
+          found: true,
+          data: {
+            name: country.name.common,
+            capital: country.capital[0],
+            population: country.population,
+            flag: country.flags.svg
+          }
+        })
+      })
+      .catch(() => setCountry({
+        found: false,
+        data: {}
+      }))
+  }, [name])
 
   return country
 }

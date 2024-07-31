@@ -2,6 +2,7 @@ import { useState } from 'react'
 import blogService from '../services/blogs'
 import { useDispatch } from 'react-redux'
 import { addBlog } from '../reducers/blogReducer'
+import { notify } from '../reducers/notificationReducer'
 
 const BlogForm = ({ setNotification }) => {
     const [title, setTitle] = useState('')
@@ -14,11 +15,10 @@ const BlogForm = ({ setNotification }) => {
         event.preventDefault()
 
         if (!title || !author || !url) {
-            setNotification({
+            dispatch(notify({
                 success: false,
-                message: 'none of fields cannot be empty'
-            })
-            setTimeout(() => setNotification(null), 3300)
+                message: 'None of fields cannot be empty!'
+            }, 3500))
             
             return
         }
@@ -33,11 +33,11 @@ const BlogForm = ({ setNotification }) => {
         setTitle('')
         setAuthor('')
         setUrl('')
-        setNotification({
+
+        dispatch(notify({
             success: true,
             message: 'Blog has been successfuly created!'
-        })
-        setTimeout(() => setNotification(null), 2000)
+        }, 2000))
     }
     
     return (

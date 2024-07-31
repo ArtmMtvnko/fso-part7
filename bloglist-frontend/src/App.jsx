@@ -4,7 +4,7 @@ import blogService from './services/blogs'
 import Login from './components/Login'
 import LoggedIn from './components/LoggedIn'
 import BlogForm from './components/BlogForm'
-import ErrorMessage from './components/ErrorMessage'
+import Notification from './components/Notification'
 import Togglable from './components/Togglable'
 import { useDispatch, useSelector } from 'react-redux'
 import { initializeBlogs } from './reducers/blogReducer'
@@ -12,7 +12,6 @@ import { initializeBlogs } from './reducers/blogReducer'
 const App = () => {
   const [notification, setNotification] = useState(null)
   const [user, setUser] = useState(null)
-  const [, setBlogs] = useState([])
 
   const dispatch = useDispatch()
   const blogs = useSelector(state => state.blogs)
@@ -44,7 +43,7 @@ const App = () => {
         : <LoggedIn user={user} setUser={setUser} />
       }
 
-      <ErrorMessage notification={notification} />
+      <Notification />
       <Togglable buttonLabel="new blog">
         <BlogForm setNotification={setNotification} />
       </Togglable>

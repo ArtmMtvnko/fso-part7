@@ -1,12 +1,16 @@
 import { useState } from 'react'
 import blogService from '../services/blogs'
+import { useDispatch } from 'react-redux'
+import { addBlog } from '../reducers/blogReducer'
 
-const BlogForm = ({ blogs, setBlogs, setNotification }) => {
+const BlogForm = ({ setNotification }) => {
     const [title, setTitle] = useState('')
     const [author, setAuthor] = useState('')
     const [url, setUrl] = useState('')
+
+    const dispatch = useDispatch()
     
-    const addBlog = async (event) => {
+    const createBlog = async (event) => {
         event.preventDefault()
 
         if (!title || !author || !url) {
@@ -19,13 +23,12 @@ const BlogForm = ({ blogs, setBlogs, setNotification }) => {
             return
         }
 
-        const createdBlog = await blogService.createBlog({
+        dispatch(addBlog({
             title,
             author,
-            url
-        })
-
-        setBlogs([...blogs, createdBlog])
+            url,
+            likes: 0
+        }))
 
         setTitle('')
         setAuthor('')
@@ -38,7 +41,7 @@ const BlogForm = ({ blogs, setBlogs, setNotification }) => {
     }
     
     return (
-        <form onSubmit={addBlog}>
+        <form onSubmit={createBlog}>
             <h2>Create new blog</h2>
             <div>
                 <label htmlFor="title">title:</label>

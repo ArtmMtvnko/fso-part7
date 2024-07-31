@@ -13,7 +13,7 @@ const Blog = ({ blog, user }) => {
         border: '1px solid black'
     }
 
-    const handleBlogDeletion = () => {
+    const removeBlog = () => {
         if (confirm(`Blog ${blog.title} is going to be deleted. Delete this blog?`)) {
             dispatch(deleteBlog(blog.id))
         }
@@ -26,8 +26,8 @@ const Blog = ({ blog, user }) => {
                 <p>{blog.url}</p>
                 <Likes blog={blog} />
                 <p>{blog.author}</p>
-                {user.username === blog.user.username && (
-                    <button onClick={handleBlogDeletion}>remove</button>
+                {user.id === (blog.user.id ?? blog.user) && (
+                    <button onClick={removeBlog}>remove</button>
                 )}
             </Togglable>
         </div>

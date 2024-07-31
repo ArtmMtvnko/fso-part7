@@ -33,4 +33,12 @@ export const deleteBlog = (id) => {
     }
 }
 
+export const addBlog = (blogDto) => {
+    return async (dispatch) => {
+        const createdBlog = await blogService.createBlog(blogDto)
+        console.log(createdBlog)
+        dispatch(appendBlog(createdBlog))
+    }
+}
+
 export default blogSlice.reducer

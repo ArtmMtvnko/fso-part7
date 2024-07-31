@@ -16,7 +16,7 @@ const App = () => {
 
   const dispatch = useDispatch()
   const blogs = useSelector(state => state.blogs)
-  
+
   useEffect(() => {
     const loggedUserJSON = localStorage.getItem('loggedBlogappUser')
     if (loggedUserJSON) {
@@ -46,11 +46,7 @@ const App = () => {
 
       <ErrorMessage notification={notification} />
       <Togglable buttonLabel="new blog">
-        <BlogForm
-          blogs={blogs}
-          setBlogs={setBlogs}
-          setNotification={setNotification}
-        />
+        <BlogForm setNotification={setNotification} />
       </Togglable>
       <h2>blogs</h2>
       {blogs.map(blog =>

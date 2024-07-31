@@ -1,10 +1,11 @@
-import { useState } from "react"
-import loginService from "../services/login"
-import blogService from "../services/blogs"
-import { useDispatch } from "react-redux"
-import { notify } from "../reducers/notificationReducer"
+import { useState } from 'react'
+import loginService from '../services/login'
+import blogService from '../services/blogs'
+import { useDispatch } from 'react-redux'
+import { notify } from '../reducers/notificationReducer'
+import { setUser } from '../reducers/userReducer'
 
-const Login = ({ setUser }) => {
+const Login = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
@@ -21,7 +22,8 @@ const Login = ({ setUser }) => {
             blogService.setToken(user.token)
             
             console.log('User: ', user)
-            setUser(user)
+            dispatch(setUser(user))
+            
             setUsername('')
             setPassword('')
         } catch (exception) {

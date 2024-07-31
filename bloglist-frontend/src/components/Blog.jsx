@@ -1,10 +1,12 @@
 import Likes from './Likes'
 import Togglable from './Togglable'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { deleteBlog } from '../reducers/blogReducer'
 
 
-const Blog = ({ blog, user }) => {
+const Blog = ({ blog }) => {
+    const user = useSelector(state => state.user)
+    
     const dispatch = useDispatch()
     
     const styles = {

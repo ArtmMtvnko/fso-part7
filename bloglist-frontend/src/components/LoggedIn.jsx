@@ -1,7 +1,14 @@
-const LoggedIn = ({ user, setUser }) => {
+import { useDispatch, useSelector } from 'react-redux'
+import { setUser } from '../reducers/userReducer'
+
+const LoggedIn = () => {
+    const user = useSelector(state => state.user)
+
+    const dispatch = useDispatch()
+    
     const hangleLoggout = () => {
         localStorage.removeItem('loggedBlogappUser')
-        setUser(null)
+        dispatch(setUser(null))
     }
     
     return (

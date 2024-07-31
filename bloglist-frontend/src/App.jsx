@@ -10,7 +10,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { initializeBlogs } from './reducers/blogReducer'
 
 const App = () => {
-  const [notification, setNotification] = useState(null)
   const [user, setUser] = useState(null)
 
   const dispatch = useDispatch()
@@ -34,19 +33,18 @@ const App = () => {
       {user === null
         ? (
           <Togglable buttonLabel="log in">
-            <Login
-              setUser={setUser}
-              setNotification={setNotification}
-            />
+            <Login setUser={setUser} />
           </Togglable>
         ) 
         : <LoggedIn user={user} setUser={setUser} />
       }
 
       <Notification />
+
       <Togglable buttonLabel="new blog">
-        <BlogForm setNotification={setNotification} />
+        <BlogForm />
       </Togglable>
+
       <h2>blogs</h2>
       {blogs.map(blog =>
         <Blog

@@ -1,16 +1,19 @@
-import blogService from '../services/blogs'
+import { useDispatch } from 'react-redux'
 import { useState } from 'react'
+import { updateBlog } from '../reducers/blogReducer'
 
 const Likes = ({ blog }) => {
     const [likes, setLikes] = useState(blog.likes ?? 0)
     
-    const likeBlog = async () => {
-        const updatedBlog = await blogService.updateBlog(blog.id, {
+    const dispatch = useDispatch()
+    
+    const likeBlog = () => {
+        dispatch(updateBlog(blog.id, {
             title: blog.title,
             author: blog.author,
             url: blog.url,
             likes: likes + 1
-        })
+        }))
         setLikes(prev => prev + 1)
     }
     

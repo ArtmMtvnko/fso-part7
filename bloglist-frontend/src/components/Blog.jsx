@@ -1,19 +1,21 @@
 import Likes from './Likes'
 import Togglable from './Togglable'
-import blogService from '../services/blogs'
+import { useDispatch } from 'react-redux'
+import { deleteBlog } from '../reducers/blogReducer'
 
 
-const Blog = ({ blog, blogs, setBlogs, user }) => {
+const Blog = ({ blog, user }) => {
+    const dispatch = useDispatch()
+    
     const styles = {
         margin: '10px 0',
         padding: 5,
         border: '1px solid black'
     }
 
-    const deleteBlog = async () => {
+    const handleBlogDeletion = () => {
         if (confirm(`Blog ${blog.title} is going to be deleted. Delete this blog?`)) {
-            await blogService.deleteBlog(blog.id)
-            setBlogs(blogs.filter(b => b.id !== blog.id))
+            dispatch(deleteBlog(blog.id))
         }
     }
     
@@ -25,7 +27,7 @@ const Blog = ({ blog, blogs, setBlogs, user }) => {
                 <Likes blog={blog} />
                 <p>{blog.author}</p>
                 {user.username === blog.user.username && (
-                    <button onClick={deleteBlog}>remove</button>
+                    <button onClick={handleBlogDeletion}>remove</button>
                 )}
             </Togglable>
         </div>

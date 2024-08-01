@@ -9,12 +9,15 @@ import LoggedIn from './components/LoggedIn'
 import BlogForm from './components/BlogForm'
 import Notification from './components/Notification'
 import Togglable from './components/Togglable'
+import userService from './services/users'
+userService.getAll().then(data => console.log(data))
 
 const App = () => {
   const blogs = useSelector(state => state.blogs)
   const user = useSelector(state => state.user)
   
   const dispatch = useDispatch()
+
   useEffect(() => {
     const loggedUserJSON = localStorage.getItem('loggedBlogappUser')
     if (loggedUserJSON) {

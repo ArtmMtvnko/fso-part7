@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux'
 import { useState } from 'react'
 import { updateBlog } from '../reducers/blogReducer'
+import { buttonStyles } from '../styles/button'
 
 const Likes = ({ blog }) => {
     const [likes, setLikes] = useState(blog.likes ?? 0)
@@ -20,7 +21,7 @@ const Likes = ({ blog }) => {
     return (
         <p>
             <span style={{ marginRight: 5 }}>likes {likes}</span>
-            <button onClick={likeBlog}>like</button>
+            <button className={buttonStyles} onClick={likeBlog}>like</button>
         </p>
     )
 }

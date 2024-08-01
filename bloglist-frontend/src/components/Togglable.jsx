@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
+import { buttonStyles } from '../styles/button'
 
 const Togglable = ({ buttonLabel, children }) => {
     const [visible, setVisible] = useState(false)
@@ -14,11 +15,11 @@ const Togglable = ({ buttonLabel, children }) => {
     return (
         <div>
             <div style={hideWhenVisible}>
-                <button onClick={toogleVisibility}>{buttonLabel}</button>
+                <button className={buttonStyles} onClick={toogleVisibility}>{buttonLabel}</button>
             </div>
             <div style={showWhenVisible} className="togglableContent">
                 {children}
-                <button onClick={toogleVisibility}>cancel</button>
+                <button className={buttonStyles} onClick={toogleVisibility}>cancel</button>
             </div>
         </div>
     )

@@ -33,7 +33,7 @@ const App = () => {
   }, [user]) // [] ==> [user]
 
   return (
-    <div>
+    <div style={{ fontFamily: 'cursive' }}>
       <NavBar />
 
       <Notification />

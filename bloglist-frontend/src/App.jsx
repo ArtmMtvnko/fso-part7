@@ -8,16 +8,17 @@ import LoggedIn from './components/LoggedIn'
 import BlogForm from './components/BlogForm'
 import Notification from './components/Notification'
 import Togglable from './components/Togglable'
-import Blogs from './components/Blogs'
+import BlogList from './components/BlogList'
 
 // to delete
 import userService from './services/users'
 import { initializeUsers } from './reducers/usersReducer'
 import Users from './components/Users'
+import { Routes, Route } from 'react-router-dom'
+import Blogs from './components/Blogs'
 userService.getAll().then(data => console.log(data))
 
 const App = () => {
-  const blogs = useSelector(state => state.blogs)
   const user = useSelector(state => state.currentUser)
   
   const dispatch = useDispatch()
@@ -48,13 +49,11 @@ const App = () => {
       }
 
       <Notification />
-      <Users />
-      <Togglable buttonLabel="new blog">
-        <BlogForm />
-      </Togglable>
 
-      <h2>blogs</h2>
-      <Blogs />
+      <Routes>
+        <Route path="/users" element={<Users />} />
+        <Route path="/" element={<Blogs />} />
+      </Routes>
     </div>
   )
 }

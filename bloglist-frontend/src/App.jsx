@@ -3,16 +3,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import { initializeBlogs } from './reducers/blogReducer'
 import { setUser } from './reducers/currnetUserReducer'
 import blogService from './services/blogs'
-import Blog from './components/Blog'
 import Login from './components/Login'
 import LoggedIn from './components/LoggedIn'
 import BlogForm from './components/BlogForm'
 import Notification from './components/Notification'
 import Togglable from './components/Togglable'
+import Blogs from './components/Blogs'
 
 // to delete
 import userService from './services/users'
 import { initializeUsers } from './reducers/usersReducer'
+import Users from './components/Users'
 userService.getAll().then(data => console.log(data))
 
 const App = () => {
@@ -47,15 +48,13 @@ const App = () => {
       }
 
       <Notification />
-
+      <Users />
       <Togglable buttonLabel="new blog">
         <BlogForm />
       </Togglable>
 
       <h2>blogs</h2>
-      {blogs.map(blog =>
-        <Blog key={blog.id} blog={blog} />
-      )}
+      <Blogs />
     </div>
   )
 }

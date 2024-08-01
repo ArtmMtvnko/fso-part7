@@ -3,12 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { initializeBlogs } from './reducers/blogReducer'
 import { setUser } from './reducers/currnetUserReducer'
 import { initializeUsers } from './reducers/usersReducer'
-import { Routes, Route, useMatch } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import blogService from './services/blogs'
-import Login from './components/Login'
-import LoggedIn from './components/LoggedIn'
 import Notification from './components/Notification'
-import Togglable from './components/Togglable'
 import Users from './components/Users'
 import Blogs from './components/Blogs'
 import UserInfo from './components/UserInfo'
@@ -37,15 +34,6 @@ const App = () => {
 
   return (
     <div>
-      {/* {user === null
-        ? (
-          <Togglable buttonLabel="log in">
-            <Login />
-          </Togglable>
-        ) 
-        : <LoggedIn />
-      } */}
-
       <NavBar />
 
       <Notification />

@@ -1,6 +1,8 @@
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import Likes from './Likes'
+import Togglable from './Togglable'
+import CommentForm from './CommentForm'
 
 const BlogInfo = () => {
     const { id } = useParams()
@@ -15,6 +17,16 @@ const BlogInfo = () => {
             <a href={`${blog.url}`}>{blog.url}</a>
             <Likes blog={blog} />
             <p>added by {blog.author}</p>
+            <hr />
+            <h3>comments</h3>
+            <Togglable buttonLabel="add comment">
+                <CommentForm />
+            </Togglable>
+            <ul>
+                {blog.comments.map(comment =>
+                    <li key={comment.id}>{comment.content}</li>
+                )}
+            </ul>
         </div>
     )
 }

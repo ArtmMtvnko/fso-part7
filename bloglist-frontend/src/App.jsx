@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { initializeBlogs } from './reducers/blogReducer'
-import { setUser } from './reducers/userReducer'
+import { setUser } from './reducers/currnetUserReducer'
 import blogService from './services/blogs'
 import Blog from './components/Blog'
 import Login from './components/Login'
@@ -9,12 +9,15 @@ import LoggedIn from './components/LoggedIn'
 import BlogForm from './components/BlogForm'
 import Notification from './components/Notification'
 import Togglable from './components/Togglable'
+
+// to delete
 import userService from './services/users'
+import { initializeUsers } from './reducers/usersReducer'
 userService.getAll().then(data => console.log(data))
 
 const App = () => {
   const blogs = useSelector(state => state.blogs)
-  const user = useSelector(state => state.user)
+  const user = useSelector(state => state.currentUser)
   
   const dispatch = useDispatch()
 
@@ -25,6 +28,7 @@ const App = () => {
       dispatch(setUser(loggedUser))
       blogService.setToken(loggedUser.token)
     }
+    dispatch(initializeUsers())
   }, [])
 
   useEffect(() => {

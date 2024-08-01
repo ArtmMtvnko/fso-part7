@@ -5,7 +5,7 @@ import { deleteBlog } from '../reducers/blogReducer'
 
 
 const Blog = ({ blog }) => {
-    const user = useSelector(state => state.user)
+    const user = useSelector(state => state.currentUser)
     
     const dispatch = useDispatch()
     

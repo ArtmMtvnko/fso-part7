@@ -3,7 +3,7 @@ import loginService from '../services/login'
 import blogService from '../services/blogs'
 import { useDispatch } from 'react-redux'
 import { notify } from '../reducers/notificationReducer'
-import { setUser } from '../reducers/userReducer'
+import { setUser } from '../reducers/currnetUserReducer'
 
 const Login = () => {
     const [username, setUsername] = useState('')

@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { setUser } from '../reducers/userReducer'
+import { setUser } from '../reducers/currnetUserReducer'
 
 const LoggedIn = () => {
-    const user = useSelector(state => state.user)
+    const user = useSelector(state => state.currentUser)
 
     const dispatch = useDispatch()
     

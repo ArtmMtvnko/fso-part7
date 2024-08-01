@@ -2,6 +2,7 @@ import Likes from './Likes'
 import Togglable from './Togglable'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteBlog } from '../reducers/blogReducer'
+import { Link } from 'react-router-dom'
 
 
 const Blog = ({ blog }) => {
@@ -23,7 +24,7 @@ const Blog = ({ blog }) => {
     
     return (
         <div className="blog" style={styles}>
-            <span style={{ marginRight: 5 }}>{blog.title}</span>
+            <Link to={`/blogs/${blog.id}`}>{blog.title}</Link>
             <Togglable buttonLabel="view">
                 <p>{blog.url}</p>
                 <Likes blog={blog} />

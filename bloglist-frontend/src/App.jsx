@@ -12,6 +12,7 @@ import Togglable from './components/Togglable'
 import Users from './components/Users'
 import Blogs from './components/Blogs'
 import UserInfo from './components/UserInfo'
+import BlogInfo from './components/BlogInfo'
 
 const App = () => {
   const user = useSelector(state => state.currentUser)
@@ -47,9 +48,11 @@ const App = () => {
       <Notification />
 
       <Routes>
+        <Route path="/" element={<h1>Home</h1>} />
         <Route path="/users/:id" element={<UserInfo />} />
         <Route path="/users" element={<Users />} />
-        <Route path="/" element={<Blogs />} />
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/blogs/:id" element={<BlogInfo />} />
       </Routes>
     </div>
   )

@@ -20,7 +20,7 @@ const BlogInfo = () => {
             <hr />
             <h3>comments</h3>
             <Togglable buttonLabel="add comment">
-                <CommentForm />
+                <CommentForm blog={blog} />
             </Togglable>
             <ul>
                 {blog.comments.map(comment =>

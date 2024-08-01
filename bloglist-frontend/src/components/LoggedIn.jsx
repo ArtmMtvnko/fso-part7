@@ -13,7 +13,7 @@ const LoggedIn = () => {
     
     return (
         <div>
-            <p>{user.name}</p>
+            <span style={{ marginRight: 5 }}>{user.name}</span>
             <button onClick={hangleLoggout}>logout</button>
         </div>
     )

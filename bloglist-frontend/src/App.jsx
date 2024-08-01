@@ -13,6 +13,7 @@ import Users from './components/Users'
 import Blogs from './components/Blogs'
 import UserInfo from './components/UserInfo'
 import BlogInfo from './components/BlogInfo'
+import NavBar from './components/NavBar'
 
 const App = () => {
   const user = useSelector(state => state.currentUser)
@@ -36,14 +37,16 @@ const App = () => {
 
   return (
     <div>
-      {user === null
+      {/* {user === null
         ? (
           <Togglable buttonLabel="log in">
             <Login />
           </Togglable>
         ) 
         : <LoggedIn />
-      }
+      } */}
+
+      <NavBar />
 
       <Notification />
 

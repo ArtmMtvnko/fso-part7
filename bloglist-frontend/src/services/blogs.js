@@ -1,10 +1,20 @@
 import axios from 'axios'
+import { jwtDecode } from 'jwt-decode'
+
 const baseUrl = '/api/blogs'
 
 let token = null
 
 const setToken = (newToken) => {
   token = `Bearer ${newToken}`
+}
+
+const isTokenExpired = (token) => {
+  if (!token) return true
+
+  const decoded = jwtDecode(token)
+  
+  return decoded.exp < Date.now() / 1000
 }
 
 const getAll = () => {
@@ -41,4 +51,12 @@ const createComment = async (blogId, commentDto) => {
   return response.data
 }
 
-export default { setToken, getAll, createBlog, updateBlog, deleteBlog, createComment }
+export default { 
+  setToken,
+  getAll,
+  createBlog,
+  updateBlog,
+  deleteBlog,
+  createComment,
+  isTokenExpired
+}

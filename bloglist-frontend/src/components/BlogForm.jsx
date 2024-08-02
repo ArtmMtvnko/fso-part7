@@ -12,7 +12,7 @@ const BlogForm = () => {
 
     const dispatch = useDispatch()
     
-    const createBlog = async (event) => {
+    const createBlog = (event) => {
         event.preventDefault()
 
         if (!title.value || !author.value || !url.value) {

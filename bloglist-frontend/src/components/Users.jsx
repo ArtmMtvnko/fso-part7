@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux'
 import User from './User'
+import { container } from '../styles/container'
 
 const Users = () => {
     const users = useSelector(state => state.users)
@@ -7,7 +8,7 @@ const Users = () => {
     if (users === null) return null
     
     return (
-        <table>
+        <table className={container}>
             <thead>
                 <tr>
                     <td></td>

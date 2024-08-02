@@ -1,5 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { setUser } from '../reducers/currnetUserReducer'
+import { buttonStyles } from '../styles/button'
+import { navBarLoggedIn } from '../styles/navBar'
 
 const LoggedIn = () => {
     const user = useSelector(state => state.currentUser)
@@ -12,9 +14,9 @@ const LoggedIn = () => {
     }
     
     return (
-        <div>
-            <span style={{ marginRight: 5 }}>{user.name}</span>
-            <button onClick={hangleLoggout}>logout</button>
+        <div className={navBarLoggedIn}>
+            <span>{user.name}</span>
+            <button className={buttonStyles} onClick={hangleLoggout}>logout</button>
         </div>
     )
 }

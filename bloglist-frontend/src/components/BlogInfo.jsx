@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import Likes from './Likes'
 import Togglable from './Togglable'
 import CommentForm from './CommentForm'
+import { container } from '../styles/container'
 
 const BlogInfo = () => {
     const { id } = useParams()
@@ -12,7 +13,7 @@ const BlogInfo = () => {
     if (!blog) return null
     
     return (
-        <div>
+        <div className={container}>
             <h1>{blog.title}</h1>
             <a href={`${blog.url}`}>{blog.url}</a>
             <Likes blog={blog} />

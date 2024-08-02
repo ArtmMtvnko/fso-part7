@@ -2,6 +2,8 @@ import { useDispatch } from 'react-redux'
 import useField from '../hooks/useField'
 import blogService from '../services/blogs'
 import { addComment } from '../reducers/blogReducer'
+import { buttonStyles } from '../styles/button'
+import { commentForm } from '../styles/comments'
 
 const CommentForm = ({ blog }) => {
     const [content, resetContent] = useField('text', 'content')
@@ -21,9 +23,9 @@ const CommentForm = ({ blog }) => {
     }
 
     return (
-        <form onSubmit={createComment}>
+        <form className={commentForm} onSubmit={createComment}>
             <input {...content} />
-            <button type="submit">leave comment</button>
+            <button className={buttonStyles} type="submit">leave comment</button>
         </form>
     )
 }

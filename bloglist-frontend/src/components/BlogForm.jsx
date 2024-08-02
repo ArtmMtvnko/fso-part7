@@ -8,7 +8,7 @@ import useField from '../hooks/useField'
 const BlogForm = () => {
     const [title, resetTitle] = useField('text', 'title')
     const [author, resetAuthor] = useField('text', 'author')
-    const [url, resetUrl] = useField('url', 'url')
+    const [url, resetUrl] = useField('text', 'url')
 
     const dispatch = useDispatch()
     

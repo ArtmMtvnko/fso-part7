@@ -31,9 +31,9 @@ const BlogForm = () => {
             likes: 0
         }))
 
-        resetTitle('')
-        resetAuthor('')
-        resetUrl('')
+        resetTitle()
+        resetAuthor()
+        resetUrl()
 
         dispatch(notify({
             success: true,

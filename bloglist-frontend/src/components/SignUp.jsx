@@ -8,10 +8,12 @@ import { loginBtn, loginForm } from '../styles/login'
 import { useNavigate } from 'react-router-dom'
 import { setLoggedIn } from '../reducers/loggedInReducer'
 import useField from '../hooks/useField'
+import userService from '../services/users'
 
-const Login = () => {
+const SignUp = () => {
     const [username, resetUsername] = useField('text', 'username')
     const [password, resetPassword] = useField('text', 'password')
+    const [name, resetName] = useField('text', 'name')
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -21,22 +23,13 @@ const Login = () => {
         console.log('logging in with:', username.value, password.value)
 
         try {
-            const user = await loginService.login({ 
+            const signedUpUser = await userService.create({ 
                 username: username.value,
-                password: password.value
+                password: password.value,
+                name: name.value
             })
 
-            localStorage.setItem('loggedBlogappUser', JSON.stringify(user))
-            blogService.setToken(user.token)
-            
-            console.log('User: ', user)
-            dispatch(setUser(user))
-            
-            resetUsername()
-            resetPassword()
-
-            dispatch(setLoggedIn(true))
-            navigate('/blogs')
+            navigate('/login')
         } catch (exception) {
             console.log(exception)
             dispatch(notify({
@@ -48,18 +41,22 @@ const Login = () => {
     
     return (
         <form className={loginForm} onSubmit={handleLogin}>
-            <h1>Login</h1>
+            <h1>Sign Up</h1>
             <div>
                 <label htmlFor="username">username</label>
-                <input {...username} id="username" />
+                <input {...username} id="username" placeholder="username for logging in" />
             </div>
             <div>
                 <label htmlFor="password">password</label>
                 <input {...password} id="password" />
             </div>
-            <button className={`${buttonStyles} ${loginBtn}`} type="submit">login</button>
+            <div>
+                <label htmlFor="password">name</label>
+                <input {...name} id="password" placeholder="your name, other users will see its" />
+            </div>
+            <button className={`${buttonStyles} ${loginBtn}`} type="submit">sign up</button>
         </form>
     )
 }
 
-export default Login
+export default SignUp

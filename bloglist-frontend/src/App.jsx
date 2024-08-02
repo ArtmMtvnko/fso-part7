@@ -13,12 +13,11 @@ import UserInfo from './components/UserInfo'
 import BlogInfo from './components/BlogInfo'
 import NavBar from './components/NavBar'
 import Login from './components/Login'
+import SignUp from './components/SignUp'
 
 const App = () => {
   const loggedIn = useSelector(state => state.loggedIn)
   const user = useSelector(state => state.currentUser)
-  const users = useSelector(state => state.users)
-  console.log('USERS', users)
   const dispatch = useDispatch()
   
   useEffect(() => {
@@ -39,12 +38,11 @@ const App = () => {
     } else {
       dispatch(setLoggedIn(false))
     }
-    
-    dispatch(initializeUsers())
   }, [])
   
   useEffect(() => {
     dispatch(initializeBlogs())
+    dispatch(initializeUsers())
   }, [user]) // [] ==> [user]
 
   return (
@@ -60,6 +58,7 @@ const App = () => {
         <Route path="/blogs" element={loggedIn ? <Blogs /> : <Navigate replace to="/login" />} />
         <Route path="/blogs/:id" element={<BlogInfo />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/sign-up" element={<SignUp />} />
       </Routes>
     </div>
   )

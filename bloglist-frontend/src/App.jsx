@@ -12,19 +12,24 @@ import UserInfo from './components/UserInfo'
 import BlogInfo from './components/BlogInfo'
 import NavBar from './components/NavBar'
 import Login from './components/Login'
+import { setLoggedIn } from './reducers/loggedInReducer'
 
 const App = () => {
+  const loggedIn = useSelector(state => state.loggedIn)
   const user = useSelector(state => state.currentUser)
   const users = useSelector(state => state.users)
   console.log(users)
   const dispatch = useDispatch()
-
+  
   useEffect(() => {
     const loggedUserJSON = localStorage.getItem('loggedBlogappUser')
     if (loggedUserJSON) {
       const loggedUser = JSON.parse(loggedUserJSON)
       dispatch(setUser(loggedUser))
       blogService.setToken(loggedUser.token)
+      dispatch(setLoggedIn(true))
+    } else {
+      dispatch(setLoggedIn(false))
     }
     dispatch(initializeUsers())
   }, [])
@@ -43,7 +48,7 @@ const App = () => {
         <Route path="/" element={<h1>Wellcome to Blog-App</h1>} />
         <Route path="/users" element={<Users />} />
         <Route path="/users/:id" element={<UserInfo />} />
-        <Route path="/blogs" element={user ? <Blogs /> : <Navigate replace to="/login" />} />
+        <Route path="/blogs" element={loggedIn ? <Blogs /> : <Navigate replace to="/login" />} />
         <Route path="/blogs/:id" element={<BlogInfo />} />
         <Route path="/login" element={<Login />} />
       </Routes>

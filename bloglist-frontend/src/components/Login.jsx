@@ -7,6 +7,7 @@ import { setUser } from '../reducers/currnetUserReducer'
 import { buttonStyles } from '../styles/button'
 import { loginBtn, loginForm } from '../styles/login'
 import { useNavigate } from 'react-router-dom'
+import { setLoggedIn } from '../reducers/loggedInReducer'
 
 const Login = () => {
     const [username, setUsername] = useState('')
@@ -31,6 +32,7 @@ const Login = () => {
             setUsername('')
             setPassword('')
 
+            dispatch(setLoggedIn(true))
             navigate('/blogs')
         } catch (exception) {
             console.log(exception)

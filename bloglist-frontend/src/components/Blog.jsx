@@ -25,7 +25,7 @@ const Blog = ({ blog }) => {
                 <p>{blog.url}</p>
                 <Likes blog={blog} />
                 <p>{blog.author}</p>
-                {user.id === (blog.user.id ?? blog.user) && (
+                {user?.id === (blog.user.id ?? blog.user) && (
                     <button className={buttonStyles} onClick={removeBlog}>remove</button>
                 )}
             </Togglable>

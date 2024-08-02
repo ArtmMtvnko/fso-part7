@@ -6,6 +6,7 @@ import LoggedIn from './LoggedIn'
 import { navBar, navBarWrap } from '../styles/navBar'
 import { container } from '../styles/container'
 import { blogLink } from '../styles/blogs'
+import { buttonStyles } from '../styles/button'
 
 const NavBar = () => {
     const user = useSelector((state) => state.currentUser)
@@ -16,9 +17,9 @@ const NavBar = () => {
                 <Link className={blogLink} to="/blogs">blogs</Link>
                 <Link className={blogLink} to="/users">users</Link>
                 {user === null ? (
-                    <Togglable buttonLabel="log in">
-                        <Login />
-                    </Togglable>
+                    <Link to="/login">
+                        <button className={buttonStyles}>login</button>
+                    </Link>
                 ) : (
                     <LoggedIn />
                 )}

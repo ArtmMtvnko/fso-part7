@@ -1,7 +1,7 @@
-import { container } from "../styles/container"
-import BlogForm from "./BlogForm"
-import BlogList from "./BlogList"
-import Togglable from "./Togglable"
+import { container } from '../styles/container'
+import BlogForm from './BlogForm'
+import BlogList from './BlogList'
+import Togglable from './Togglable'
 
 const Blogs = () => {
     return (

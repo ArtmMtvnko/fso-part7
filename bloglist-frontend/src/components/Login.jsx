@@ -4,12 +4,16 @@ import blogService from '../services/blogs'
 import { useDispatch } from 'react-redux'
 import { notify } from '../reducers/notificationReducer'
 import { setUser } from '../reducers/currnetUserReducer'
+import { buttonStyles } from '../styles/button'
+import { loginBtn, loginForm } from '../styles/login'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const handleLogin = async (event) => {
         event.preventDefault()
@@ -26,6 +30,8 @@ const Login = () => {
             
             setUsername('')
             setPassword('')
+
+            navigate('/blogs')
         } catch (exception) {
             console.log(exception)
             dispatch(notify({
@@ -36,7 +42,7 @@ const Login = () => {
     }
     
     return (
-        <form onSubmit={handleLogin}>
+        <form className={loginForm} onSubmit={handleLogin}>
             <h1>Login</h1>
             <div>
                 <label htmlFor="username">username</label>
@@ -60,7 +66,7 @@ const Login = () => {
                     onChange={({ target }) => setPassword(target.value)}
                 />
             </div>
-            <button type="submit">login</button>
+            <button className={`${buttonStyles} ${loginBtn}`} type="submit">login</button>
         </form>
     )
 }

@@ -11,6 +11,10 @@ export const navBar = css`
 
     & > *:last-child {
         margin-left: auto;
+
+        & button {
+            background-color: #f0f0f0;
+        }
     }
 `
 

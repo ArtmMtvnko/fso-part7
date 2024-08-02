@@ -3,6 +3,8 @@ import blogService from '../services/blogs'
 import { useDispatch } from 'react-redux'
 import { addBlog } from '../reducers/blogReducer'
 import { notify } from '../reducers/notificationReducer'
+import { blogForm } from '../styles/blogs'
+import { buttonStyles } from '../styles/button'
 
 const BlogForm = () => {
     const [title, setTitle] = useState('')
@@ -41,7 +43,7 @@ const BlogForm = () => {
     }
     
     return (
-        <form onSubmit={createBlog}>
+        <form className={blogForm} onSubmit={createBlog}>
             <h2>Create new blog</h2>
             <div>
                 <label htmlFor="title">title:</label>
@@ -73,7 +75,7 @@ const BlogForm = () => {
                     onChange={({ target }) => setUrl(target.value)}
                 />
             </div>
-            <button type="submit">create</button>
+            <button className={buttonStyles} type="submit">create</button>
         </form>
     )
 }

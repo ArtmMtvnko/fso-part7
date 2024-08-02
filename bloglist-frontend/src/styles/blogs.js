@@ -34,3 +34,38 @@ export const blogLink = css`
         text-decoration: underline;
     }
 `
+
+export const blogForm = css`
+    max-width: 400px;
+
+    & > h2 {
+        text-align: center;
+    }
+
+    & > div {
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr 5fr;
+        margin: 10px 0;
+
+        & > label {
+            margin: 0 10px 0 0;
+            place-self: center end;
+        }
+
+        & > input {
+            padding: 5px;
+            transition: 0.3s ease-out;
+            
+            &:focus {
+                box-shadow: 2px 2px 5px gray;
+                transform: translate(-5px, 0);
+            }
+        }
+    }
+`
+
+export const blogContainer = css`
+    max-width: 900px;
+    margin: 0 auto;
+`

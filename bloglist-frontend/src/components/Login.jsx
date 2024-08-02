@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import loginService from '../services/login'
 import blogService from '../services/blogs'
 import { useDispatch } from 'react-redux'
@@ -8,20 +7,24 @@ import { buttonStyles } from '../styles/button'
 import { loginBtn, loginForm } from '../styles/login'
 import { useNavigate } from 'react-router-dom'
 import { setLoggedIn } from '../reducers/loggedInReducer'
+import useField from '../hooks/useField'
 
 const Login = () => {
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
+    const [username, resetUsername] = useField('')
+    const [password, resetPassword] = useField('')
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const handleLogin = async (event) => {
         event.preventDefault()
-        console.log('logging in with:', username, password)
+        console.log('logging in with:', username.value, password.value)
 
         try {
-            const user = await loginService.login({ username, password })
+            const user = await loginService.login({ 
+                username: username.value,
+                password: password.value
+            })
 
             localStorage.setItem('loggedBlogappUser', JSON.stringify(user))
             blogService.setToken(user.token)
@@ -29,8 +32,8 @@ const Login = () => {
             console.log('User: ', user)
             dispatch(setUser(user))
             
-            setUsername('')
-            setPassword('')
+            resetUsername('')
+            resetPassword('')
 
             dispatch(setLoggedIn(true))
             navigate('/blogs')
@@ -48,25 +51,11 @@ const Login = () => {
             <h1>Login</h1>
             <div>
                 <label htmlFor="username">username</label>
-                <input
-                    data-testid="username"
-                    type="text"
-                    name="username"
-                    id="username"
-                    value={username}
-                    onChange={({ target }) => setUsername(target.value)}
-                />
+                <input {...username} id="username" />
             </div>
             <div>
                 <label htmlFor="password">password</label>
-                <input
-                    data-testid="password"
-                    type="text"
-                    name="password"
-                    id="password"
-                    value={password}
-                    onChange={({ target }) => setPassword(target.value)}
-                />
+                <input {...password} id="password" />
             </div>
             <button className={`${buttonStyles} ${loginBtn}`} type="submit">login</button>
         </form>

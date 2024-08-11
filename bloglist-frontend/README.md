@@ -1,8 +1,18 @@
-# React + Vite
+# [Link for the backend of the app](https://github.com/ArtmMtvnko/fso-part4/tree/main/blog-list)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Some snapshots of the application
 
-Currently, two official plugins are available:
+Login page:
+![login page](https://github.com/user-attachments/assets/473815ba-906f-40ab-826d-cc1dc44fb271)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Main blogs page:
+![blogs page](https://github.com/user-attachments/assets/adaddd56-593f-4c2d-bab1-428e878007af)
+
+Also you can open blog in an individual page:
+![blog info page](https://github.com/user-attachments/assets/d2c38043-ddc1-46d2-9bf8-5cebc4a48dd4)
+
+All users are shown:
+![users page](https://github.com/user-attachments/assets/d1cdd184-5df0-4656-b91e-3042f2e93134)
+
+And you can inspect each user's blogs (posts):
+![user info page](https://github.com/user-attachments/assets/7358bbc1-e868-462e-b426-83c267e234c3)

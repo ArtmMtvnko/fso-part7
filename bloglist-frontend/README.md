@@ -1,4 +1,5 @@
-# [Link for the backend of the app](https://github.com/ArtmMtvnko/fso-part4/tree/main/blog-list)
+# [Link to the backend of the app](https://github.com/ArtmMtvnko/fso-part4/tree/main/blog-list)
+# [Link to the end-to-end tests](https://github.com/ArtmMtvnko/fso-part5-e2e)
 
 ## Some snapshots of the application
 
